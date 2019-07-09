@@ -1,2 +1,4 @@
 
-echo $(docker network inspect api_default | grep Gateway | grep -o -E '[0-9\.]+')
+  docker-compose up --build
+ 
+  docker-compose run app composer install 
