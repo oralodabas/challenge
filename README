@@ -2,3 +2,9 @@
   docker-compose up --build
  
   docker-compose run app composer install 
+  
+  docker-compose run app php bin/console doctrine:migrations:migrate
+  
+  docker-compose run app php bin/console doctrine:fixtures:load --purge-with-truncate
+  
+  docker-compose run app php bin/console fos:elastica:populate --no-debug
