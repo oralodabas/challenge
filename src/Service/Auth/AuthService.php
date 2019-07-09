@@ -7,16 +7,13 @@ namespace App\Service\Auth;
 use App\Entity\User;
 use App\Exception\ServiceException;
 use App\Repository\UserRepository;
-use App\Resources\Redis\RedisHelper;
-use App\Security\TokenAuthenticator;
 use App\Service\AbstractService;
 use App\Service\Tools\EmTransactionService;
 use App\Service\Tools\EntitySerializerService;
-use Symfony\Component\HttpFoundation\Request;
 
 class AuthService extends AbstractService
 {
-    private $ttl = 360;
+    private $ttl = 300;
 
     private $entity = User::class;
     /**

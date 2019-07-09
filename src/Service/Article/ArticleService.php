@@ -39,37 +39,17 @@ class ArticleService
      */
     public function getDocument(array $params,Request $request)
     {
-        $finder = $this->container->get('fos_elastica.finder.app.article');
-        $results = $finder->find('title');
-        var_dump($results);
-        exit;
-        $query = $request->query->get('q', '');
-        $limit = $request->query->get('l', 10);
 
-        $match = new MultiMatch();
-        $match->setQuery($query);
-        $match->setFields(["title^4", "summary", "content", "author"]);
+        /** var FOS\ElasticaBundle\Manager\RepositoryManager */
+        $repositoryManager = $this->container->get('fos_elastica.manager');
 
-        $bool = new BoolQuery();
-        $bool->addMust($match);
+        /** var FOS\ElasticaBundle\Repository */
+        $repository = $repositoryManager->getRepository('App:Article');
 
-        $elasticaQuery = new Query($bool);
-        $elasticaQuery->setSize($limit);
+        /** var array of App\Entity\Article */
+        $article = $repository->searchArticle('b');
 
-
-        $foundPosts = $finder->get('fos_elastica.finder.app.article')->search($elasticaQuery);
-        $results = [];
-        foreach ($foundPosts as $post) {
-            $results[] = $post->getSource();
-        }
-
-
-
-
-        exit;
-
-
-        return $results;
+        return $article;
 
     }
 

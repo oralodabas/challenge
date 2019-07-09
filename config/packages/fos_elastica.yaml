@@ -8,8 +8,6 @@ fos_elastica:
     indexes:
         app:
             client: default
-            use_alias: true
-            index_name: articles
             types:
                 article:
                     properties:
@@ -20,6 +18,7 @@ fos_elastica:
                     persistence:
                         driver: orm
                         model: App\Entity\Article
+                        repository: App\Repository\ArticleElasticRepository
                         finder: ~
                         provider: ~
                         identifier: id
