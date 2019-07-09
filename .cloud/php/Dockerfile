@@ -12,6 +12,9 @@ RUN apt-get update && apt-get install -y \
     zip \
     jpegoptim optipng pngquant gifsicle
 
+RUN pecl install redis && docker-php-ext-enable redis
+
+
 # Clear cache
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
@@ -28,9 +31,6 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 # Setting locales #
 RUN echo fr_FR.UTF-8 UTF-8 > /etc/locale.gen && locale-gen
 
-#RUN php bin/console doctrine:migrations:migrate --no-interaction || :
-
-#RUN php bin/console doctrine:fixtures:load --purge-with-truncate || :
 # Changing Workdir
 WORKDIR /var/www
 

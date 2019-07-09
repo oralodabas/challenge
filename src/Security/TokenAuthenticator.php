@@ -35,8 +35,12 @@ class TokenAuthenticator extends AbstractGuardAuthenticator
      */
     public function supports(Request $request)
     {
+        if($request->attributes->get('_route') == 'login' ){
 
-        return $request->headers->has('X-AUTH-TOKEN');
+            return false;
+        }
+
+        return true;
     }
 
     /**
@@ -47,6 +51,7 @@ class TokenAuthenticator extends AbstractGuardAuthenticator
      */
     public function getCredentials(Request $request)
     {
+
         if ($request->headers->get('X-AUTH-TOKEN') == null) {
             $this->start($request);
         }

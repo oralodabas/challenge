@@ -26,7 +26,7 @@ class ArticleService
      */
     private $container;
 
-    public function __construct($sncRedisDefault,ContainerInterface $container)
+    public function __construct($sncRedisDefault, ContainerInterface $container)
     {
         $this->redis = $sncRedisDefault;
         $this->container = $container;
@@ -34,10 +34,9 @@ class ArticleService
 
     /**
      * @param array $params
-     * @param Request $request
      * @return array
      */
-    public function getDocument(array $params,Request $request)
+    public function getDocument(array $params)
     {
 
         /** var FOS\ElasticaBundle\Manager\RepositoryManager */
@@ -47,7 +46,27 @@ class ArticleService
         $repository = $repositoryManager->getRepository('App:Article');
 
         /** var array of App\Entity\Article */
-        $article = $repository->searchArticle('b');
+        $article = $repository->searchArticle($params['key'] ?? $params['key']);
+
+        return $article;
+
+    }
+
+    /**
+     * @param array $params
+     * @return array
+     */
+    public function getDocumentDetail(array $params)
+    {
+
+        /** var FOS\ElasticaBundle\Manager\RepositoryManager */
+        $repositoryManager = $this->container->get('fos_elastica.manager');
+
+        /** var FOS\ElasticaBundle\Repository */
+        $repository = $repositoryManager->getRepository('App:Article');
+
+        /** var array of App\Entity\Article */
+        $article = $repository->searchArticle($params['key'] ?? $params['key']);
 
         return $article;
 

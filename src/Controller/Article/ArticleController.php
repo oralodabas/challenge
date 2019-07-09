@@ -7,7 +7,6 @@ use App\Controller\BaseApiController;
 use App\Service\Article\ArticleService;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
 
 
 class ArticleController extends BaseApiController
@@ -25,16 +24,15 @@ class ArticleController extends BaseApiController
 
     /**
      * @param Request $request
-     * @return array|\Symfony\Component\HttpFoundation\Response
+     * @return array|Response
      * @Route("/document",name="document",methods={"GET"})
      */
     public function getDocumentAction(Request $request)
     {
         try {
-
             $params = $this->getRequestContentParams($request);
 
-            $result = $this->service->getDocument($params,$request);
+            $result = $this->service->getDocument($params);
 
             return $this->successResponse($result);
 
