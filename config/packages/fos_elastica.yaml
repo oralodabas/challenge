@@ -1,0 +1,29 @@
+# Read the documentation: https://github.com/FriendsOfSymfony/FOSElasticaBundle/blob/master/Resources/doc/setup.md
+fos_elastica:
+    clients:
+        default: { host: zingat.elasticsearch, port: 9200 }
+    serializer:
+        callback_class: FOS\ElasticaBundle\Serializer\Callback
+        serializer: jms_serializer
+    indexes:
+        app:
+            client: default
+            use_alias: true
+            index_name: articles
+            types:
+                article:
+                    properties:
+                        id: ~
+                        title: ~
+                        content: ~
+
+                    persistence:
+                        driver: orm
+                        model: App\Entity\Article
+                        finder: ~
+                        provider: ~
+                        identifier: id
+                        listener:
+                            insert: true
+                            update: true
+                            delete: true

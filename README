@@ -1,0 +1,2 @@
+
+echo $(docker network inspect api_default | grep Gateway | grep -o -E '[0-9\.]+')
