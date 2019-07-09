@@ -1,0 +1,81 @@
+{
+	"id": "3def38bc-41ed-a894-7c1c-25fce4a5bb2c",
+	"name": "challenge",
+	"description": "",
+	"order": [
+		"97d24d61-4312-040f-6ac8-acd167960a76",
+		"7f964daf-3f13-09d2-c46a-58fccc6ed549"
+	],
+	"folders": [],
+	"folders_order": [],
+	"timestamp": 1562677772473,
+	"owner": 0,
+	"public": false,
+	"requests": [
+		{
+			"id": "7f964daf-3f13-09d2-c46a-58fccc6ed549",
+			"headers": "X-AUTH-TOKEN: d5c5bc4a12b94f6ec68\n",
+			"headerData": [
+				{
+					"key": "X-AUTH-TOKEN",
+					"value": "d5c5bc4a12b94f6ec68",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8096/document?key=1",
+			"queryParams": [
+				{
+					"key": "key",
+					"value": "1",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1562694951088,
+			"name": "document",
+			"description": "",
+			"collectionId": "3def38bc-41ed-a894-7c1c-25fce4a5bb2c",
+			"responses": []
+		},
+		{
+			"id": "97d24d61-4312-040f-6ac8-acd167960a76",
+			"headers": "",
+			"headerData": [
+				{
+					"key": "",
+					"value": "",
+					"description": "",
+					"enabled": false
+				}
+			],
+			"url": "http://localhost:8096/login",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1562694953257,
+			"name": "login",
+			"description": "",
+			"collectionId": "3def38bc-41ed-a894-7c1c-25fce4a5bb2c",
+			"responses": [],
+			"rawModeData": "{\n\"user_name\":\"oral\",\n\"password\":1234\n}"
+		}
+	]
+}
