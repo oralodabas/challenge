@@ -7,6 +7,7 @@ use App\Controller\BaseApiController;
 use App\Service\Article\ArticleService;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
 
 
 class ArticleController extends BaseApiController
